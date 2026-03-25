@@ -383,3 +383,6 @@ Appendix: licensing and terms
 
 End of README
 
+## Links
+
+[![Hypercommit](https://img.shields.io/badge/Hypercommit-DB2475)](https://hypercommit.com/ios-real-time-communication-framework)
